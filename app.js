@@ -3,20 +3,10 @@ const Express = require("express"),
   Fs = require("fs"),
   db = require("./modules/db"),
   session = require("express-session"),
-  cookieParser = require("cookie-parser");
+  cookieParser = require("cookie-parser"),
+  morgan = require("morgan");
 
 const app = Express();
-
-app.use(Express.json());
-app.use(Express.urlencoded({ extended: true }));
-app.use("/assets", Express.static("public"));
-app.use(cookieParser());
-
-// Error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(404).json({ error: err.message });
-});
 
 // Session
 const oneDay = 1000 * 60 * 60 * 24;
@@ -29,10 +19,24 @@ app.use(
   })
 );
 
+// Middlewares
+app.use(Express.json());
+app.use(Express.urlencoded({ extended: true }));
+app.use("/assets", Express.static("public"));
+app.use(cookieParser());
+app.use(morgan("dev"));
+
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(404).json({ error: err.message });
+});
+
 /* Settings */
 app.set("view engine", "ejs");
 app.set("views", Path.join(__dirname, "views"));
 
+// Database
 app.use(async (req, res, next) => {
   req.db = await db();
   next();

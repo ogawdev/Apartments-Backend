@@ -10,4 +10,6 @@ module.exports = {
   DB_PASS: env.DB_PASS,
   DB_HOST: env.DB_HOST,
   DB_PORT: env.DB_PORT,
+  ADMIN_USERNAME: env.ADMIN_USERNAME,
+  ADMIN_PASSWORD: env.ADMIN_PASSWORD,
 };
