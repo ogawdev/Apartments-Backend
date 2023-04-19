@@ -1,0 +1,81 @@
+<% var title, ok, message, messages %>
+<%- include('components/header', { title }) %>
+
+<link rel="stylesheet" href="/assets/css/category.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+
+    <%- include('components/sidebar') %>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+
+        <%- include('components/navbar') %>
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper bg-light">
+
+                <h4><a href="/admin">Home</a>/Messages</h4>
+
+
+                <% if(ok && message) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= message %>
+                    </div>
+                <% } %>
+
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2><b>Messages</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>FISh</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <% messages?.map((msg) => { %>
+                                <tr>
+                                    <td><%= msg.name %></td>
+                                    <td><%= msg.phone %></td>
+                                    <td><%= msg.message %></td>
+                                    <td>
+                                        <a href="/admin/message/delete/<%= msg.id %>" class="delete pl-3" ><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+<%- include('components/footer') %>

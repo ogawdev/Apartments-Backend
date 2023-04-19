@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("categories", {
-    ctegory_id: {
+    category_id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4(),
       primaryKey: true,
     },
     title: {

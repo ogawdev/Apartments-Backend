@@ -19,12 +19,13 @@ module.exports = async function () {
     const db = {};
 
     // Models
-    db.Apartment = require("../models/ApartmentModel")(sequelize, Sequelize);
-    db.Category = require("../models/CategoryModel")(sequelize, Sequelize);
+    db.Apartment = require("../models/apartments.model.js")(sequelize, Sequelize);
+    db.Category = require("../models/category.model.js")(sequelize, Sequelize);
+    db.Message = require("../models/message.model.js")(sequelize, Sequelize);
 
     // Relations
     db.Category.hasMany(db.Apartment, {
-      foreignKey: "ctegory_id",
+      foreignKey: "category_id",
       as: "apartments",
     });
 
@@ -33,7 +34,8 @@ module.exports = async function () {
       as: "categories",
     });
 
-    await sequelize.sync({ alter: true });
+    // await sequelize.sync({ alter: true });
+    await sequelize.sync({ force: false });
     return db;
   } catch (e) {
     console.log("DB ERROR", e);

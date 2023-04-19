@@ -4,7 +4,8 @@ const Express = require("express"),
   db = require("./modules/db"),
   session = require("express-session"),
   cookieParser = require("cookie-parser"),
-  morgan = require("morgan");
+  morgan = require("morgan"),
+  compression = require('compression')
 
 const app = Express();
 
@@ -25,11 +26,14 @@ app.use(Express.urlencoded({ extended: true }));
 app.use("/assets", Express.static("public"));
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(compression());
 
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(404).json({ error: err.message });
+  res.render("404", {
+      error: err.message,
+  })
 });
 
 /* Settings */
@@ -53,7 +57,10 @@ Fs.readdir(routePath, (err, files) => {
   });
 
   app.use("*", (req, res) => {
-    res.render("404");
+    res.status(404).json({
+        ok: false,
+        message: "Page not found"
+    })
   });
 });
 
