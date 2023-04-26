@@ -11,6 +11,10 @@ Run
 ``
 npm install
 ``
+or 
+``
+yarn
+``
 to install required packages
 
 ## 3. Create .env variable
@@ -24,28 +28,20 @@ Run command
 npm run dev
 ``
 ## Auth Features
-1. Register a user
-2. Verify user's email address
-3. Send forgot password email
-4. Reset password
-5. Get current user
-6. Login
-7. Access token
+1. Admin Panel
+2. Login
+3. Access session
 
 ## Task Features (Only with access token)
-1. Create task
-2. Edit task
-3. Delete task
-4. Get task by id
-5. Get user's tasks
-6. Search tasks by title (if belongs to this user)
+1. Create, Delete, Get Category
+2. Create, Delete, Get Apartment
+3. Create, Delete Message
 
 ## Used technologies?
 - Express - Web server
 - Joi - Validation
 - Bcrypt - Password hashing
-- Jsonwebtoken - Signing and verifying JSON web tokens
+- Session - Signing and verifying JSON web tokens
 - Config - Managing configuration and env files
-
-## Useful Links
-[Postman Collection](https://documenter.getpostman.com)
+- Multer - Save file
+- Swagger - Api docs
