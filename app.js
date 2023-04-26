@@ -16,7 +16,7 @@ const app = Express();
 app.use(cors("*"));
 
 // Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup("./Apartments-Backend.postman_collection.json"));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(require("./modules/swagger")));
 
 // Session
 const oneDay = 1000 * 60 * 60 * 24;
@@ -48,12 +48,12 @@ app.use(async (req, res, next) => {
 });
 
 /* Routes */
-app.use("/", (req, res) => {
-    res.status(200).json({
-        ok: true,
-        messages: "Succes",
-    })
-})
+// app.use("/", (req, res) => {
+//     res.status(200).json({
+//         ok: true,
+//         messages: "Succes",
+//     })
+// })
 
 const routePath = Path.join(__dirname, "routes");
 Fs.readdir(routePath, (err, files) => {

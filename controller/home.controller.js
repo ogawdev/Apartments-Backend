@@ -97,7 +97,7 @@ module.exports = class Home {
 
     static async ApartmentGET(req, res) {
         try {
-            const { Apartment } = req.db
+            const { Apartment, Category } = req.db
             const { category_id } = req.params
             let { c_page, p_page } = req.query;
 
@@ -118,6 +118,7 @@ module.exports = class Home {
                 limit: p_page ,
                 raw: true
             });
+
 
             res.json({
                 ok: true,
