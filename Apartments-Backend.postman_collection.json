@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "fe89aaed-3456-4d07-ba64-de115f278459",
+		"name": "Apartments-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18195046"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/api/category"
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/category",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/api/category"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "529"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"211-DaYMYuQjesOFtne0e921U38mkbo\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "connect.sid=s%3ASettuSOAp3ixtojenxqfrCskgKEt4Rb0.XaH0%2Fv3%2F9h0IWJpqkhQ0fm0X4iJDUkUBx3ntU%2Fb7Brg; Path=/; Expires=Wed, 26 Apr 2023 13:57:27 GMT; HttpOnly"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Apr 2023 13:57:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true,\n    \"categories\": [\n        {\n            \"category_id\": \"c3444880-6324-4b77-8e6d-aa9459d05885\",\n            \"title\": \"dsad\",\n            \"description\": \"sadas\",\n            \"image\": \"/assets/uploads/1e2b42c5909016f31eb69a57540e7a0e.png\",\n            \"createdAt\": \"2023-04-13T18:46:48.346Z\",\n            \"updatedAt\": \"2023-04-13T18:46:48.346Z\"\n        },\n        {\n            \"category_id\": \"633c3de9-9384-41dc-99a6-d0cd74ce3929\",\n            \"title\": \"dsad\",\n            \"description\": \"sadas\",\n            \"image\": \"/assets/uploads/1e2b42c5909016f31eb69a57540e7a0e.png\",\n            \"createdAt\": \"2023-04-13T18:47:08.350Z\",\n            \"updatedAt\": \"2023-04-13T18:47:08.350Z\"\n        }\n    ],\n    \"totalCount\": 2,\n    \"p_page\": 5,\n    \"c_page\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/category/c3444880-6324-4b77-8e6d-aa9459d05885",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/api/category/c3444880-6324-4b77-8e6d-aa9459d05885"
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/category/c3444880-6324-4b77-8e6d-aa9459d05885",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/api/category/c3444880-6324-4b77-8e6d-aa9459d05885"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "255"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ff-BsGeFVlUPdqazc24vH/m1YhKr7o\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Apr 2023 13:58:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true,\n    \"category\": {\n        \"category_id\": \"c3444880-6324-4b77-8e6d-aa9459d05885\",\n        \"title\": \"dsad\",\n        \"description\": \"sadas\",\n        \"image\": \"/assets/uploads/1e2b42c5909016f31eb69a57540e7a0e.png\",\n        \"createdAt\": \"2023-04-13T18:46:48.346Z\",\n        \"updatedAt\": \"2023-04-13T18:46:48.346Z\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

@@ -5,9 +5,18 @@ const Express = require("express"),
   session = require("express-session"),
   cookieParser = require("cookie-parser"),
   morgan = require("morgan"),
-  compression = require('compression')
+  compression = require('compression'),
+  swaggerUi = require('swagger-ui-express'),
+  swaggerDocs = require("./modules/swagger");
+  cors = require("cors")
 
 const app = Express();
+
+// Cors
+app.use(cors("*"));
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup("./Apartments-Backend.postman_collection.json"));
 
 // Session
 const oneDay = 1000 * 60 * 60 * 24;
@@ -28,14 +37,6 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(compression());
 
-// Error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.render("404", {
-      error: err.message,
-  })
-});
-
 /* Settings */
 app.set("view engine", "ejs");
 app.set("views", Path.join(__dirname, "views"));
@@ -47,6 +48,13 @@ app.use(async (req, res, next) => {
 });
 
 /* Routes */
+app.use("/", (req, res) => {
+    res.status(200).json({
+        ok: true,
+        messages: "Succes",
+    })
+})
+
 const routePath = Path.join(__dirname, "routes");
 Fs.readdir(routePath, (err, files) => {
   if (err) throw new Error(err);
@@ -62,6 +70,15 @@ Fs.readdir(routePath, (err, files) => {
         message: "Page not found"
     })
   });
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(404).json({
+        ok: false,
+        error: err,
+    })
 });
 
 module.exports = app;
